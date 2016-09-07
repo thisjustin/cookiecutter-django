@@ -1,17 +1,32 @@
 {% raw %}{% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% load user_filters static %}
 
 {% block title %}{{ user.username }}{% endblock %}
 
 {% block content %}
-  <h1>{{ user.username }}</h1>
-  <form class="form-horizontal" method="post" action="{% url 'users:update' %}">
+<h1>{{ user.username }}</h1>
+<form class="user-profile-form">
     {% csrf_token %}
-    {{ form|crispy }}
-    <div class="control-group">
-      <div class="controls">
-        <button type="submit" class="btn">Update</button>
-      </div>
+    <div class="form-group">
+        <label>Name of User</label>
+        <input class="text-input" name="name" maxlength="255" type="text" value="{{ user.name }}"/>
     </div>
-  </form>
-{% endblock %}{% endraw %}
+
+    <div class="control-group">
+        <div class="controls">
+            <div class="btn submit">Update</div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+{% block javascript %}
+    {{ block.super }}
+    <script src="{% static 'js/pages/users/user_form.js' %}"></script>
+    <script src="{% static 'js/pages/users/views/user_profile_form.js' %}"></script>
+    <script type="text/javascript">
+        {% endraw %}{{ cookiecutter.js_namespace }}{% raw %}.users.UserForm.init({
+            user: {{ request.user|userify|safe }}
+        });
+    </script>
+{% endblock %}
+{% endraw %}

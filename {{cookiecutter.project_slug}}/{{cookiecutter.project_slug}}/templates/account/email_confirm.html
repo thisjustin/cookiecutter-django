@@ -1,4 +1,4 @@
-{% raw %}{% extends "account/base.html" %}
+{% raw %}{% extends "base.html" %}
 
 {% load i18n %}
 {% load account %}
@@ -6,7 +6,7 @@
 {% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
 
 
-{% block inner %}
+{% block content %}
 <h1>{% trans "Confirm E-mail Address" %}</h1>
 
 {% if confirmation %}
