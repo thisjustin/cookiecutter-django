@@ -13,7 +13,6 @@
             {% endif %}
         </div>
     </div>
-
     {% if object == request.user %}
     <!-- Action buttons -->
     <div class="">
@@ -22,7 +21,6 @@
             <a class="btn btn-primary" href="{% url 'account_email' %}">E-Mail</a>
             <!-- Your Stuff: Custom user template urls -->
         </div>
-
     </div>
     <!-- End Action buttons -->
     {% endif %}
