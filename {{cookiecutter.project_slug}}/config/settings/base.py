@@ -52,7 +52,8 @@ THIRD_PARTY_APPS = [
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
-]
+    'rest_framework', # API
+)
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
@@ -278,15 +279,24 @@ else:
 ########## END CELERY
 {% endif %}
 
-{%- if cookiecutter.use_compressor == 'y'-%}
+{% if cookiecutter.use_compressor == 'y'%}
 # django-compressor
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ['compressor']
 STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
-{%- endif %}
+{% endif %}
 
 # Location of root django.contrib.admin URL, use {% raw %}{% url 'admin:index' %}{% endraw %}
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ]
+}
+
+LOGGER_NAME = '{{ cookiecutter.project_slug }}'

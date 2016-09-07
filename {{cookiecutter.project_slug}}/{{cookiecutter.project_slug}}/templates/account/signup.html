@@ -1,11 +1,11 @@
-{% raw %}{% extends "account/base.html" %}
+{% raw %}{% extends "base.html" %}
 
 {% load i18n %}
 {% load crispy_forms_tags %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block inner %}
+{% block content %}
 <h1>{% trans "Sign Up" %}</h1>
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
