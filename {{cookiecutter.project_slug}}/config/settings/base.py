@@ -290,17 +290,6 @@ STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
-
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
-    ]
-}
-
-LOGGER_NAME = '{{ cookiecutter.project_slug }}'
-
 # ------------------------------------------------------------------------------
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
